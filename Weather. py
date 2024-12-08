@@ -1,0 +1,12 @@
+def get_weather_data(api_key, latitude, longitude):
+    url = f"http://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid={api_key}"
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        temperature_kelvin = data.get("main", {}).get("temp", 0)
+        weather_conditions = data.get("weather", [{}])[0].get("main", "")
+        # Convert temperature from Kelvin to Fahrenheit
+        temperature_fahrenheit = (temperature_kelvin - 273.15) * 9/5 + 32
+        return temperature_fahrenheit, weather_conditions
+    else:
+        return None, None
