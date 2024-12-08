@@ -1,0 +1,12 @@
+def predict_price(temperature, weather, busy_times, base_price):
+    # Conditions to increase price
+    if temperature < 45:  # If temperature is lower than 45°F
+        price = base_price * 1.2  # Increase price by 20%
+    elif weather in ["Rain", "Snow"] or "Heavy" in weather:  # If it will snow or rain heavily
+        price = base_price * 1.15  # Increase price by 15%
+    elif len(busy_times) > 2:  # If there are many busy times (indicating a high rush)
+        price = base_price * 1.25  # Increase price by 25%
+    else:
+        price = base_price  # No increase
+    
+    return price
