@@ -1,0 +1,10 @@
+def get_busy_times(api_key, place_id):
+    url = f"https://maps.googleapis.com/maps/api/place/details/json?placeid={place_id}&key={api_key}"
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        # Extract busy times (usually in "opening_hours" -> "periods" or similar)
+        busy_times = data.get("result", {}).get("opening_hours", {}).get("periods", [])
+        return busy_times
+    else:
+        return None
