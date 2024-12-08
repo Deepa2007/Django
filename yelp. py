@@ -1,0 +1,19 @@
+import requests
+
+def get_yelp_data(api_key, restaurant_name='Village The Soul of India'):
+    url = "https://api.yelp.com/v3/businesses/search"
+    headers = {
+        "Authorization": f"Bearer {api_key}"
+    }
+    params = {
+        "term": restaurant_name,
+        "location": "Hicksville",
+        "limit": 1
+    }
+    
+    response = requests.get(url, headers=headers, params=params)
+    if response.status_code == 200:
+        business_data = response.json()
+        return business_data
+    else:
+        return None
