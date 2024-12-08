@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant Price Predictor</title>
+</head>
+<body>
+    <h1>Village Menu and Price Prediction</h1>
+    
+    <h2>Menu Items</h2>
+    <ul>
+        {% for item in village_menu %}
+            <li>{{ item.name }} - ${{ item.price }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Weather Conditions</h2>
+    <p>Temperature: {{ temperature }}°F</p>
+    <p>Weather: {{ weather_conditions }}</p>
+
+    <h2>Busy Times</h2>
+    <ul>
+        {% for time in busy_times %}
+            <li>{{ time }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Predicted Price for Village Menu Items</h2>
+    <p>Predicted price (with adjustments): ${{ predicted_price }}</p>
+</body>
+</html>
